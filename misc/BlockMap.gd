@@ -57,10 +57,23 @@ func set_bias(_bias: Vector2):
 
 
 func is_idle(cord: Vector2):
-	if cord.y < 0: return false
-	var _block: BlockHolder = BlockMap.get_blockholder(cord)
+	if cord.y < 0 || cord.y >= row || cord.x < 0 || cord.x >= col:
+		return false
+	var _block: BlockHolder = get_blockholder(cord)
 	if !_block.is_idle \
-		&& _block.get_block() != null \
-		&& _block.get_block().state == BlockType.state.STATIC:
+		&& (_block.get_block() != null \
+		&& _block.get_block().state == BlockType.state.STATIC):
 		return false
 	return true
+
+
+onready var Block = preload("res://tetris/Block.tscn")
+
+func debug_set_block(vcord: Vector2):
+	var _block = Block.instance()
+	var _block_holder = BlockMap.get_blockholder(vcord)
+	_block.block_holder = _block_holder
+	_block_holder.set_block(_block)
+	_block.set_color(Color.wheat)
+	_block.state = BlockType.state.STATIC
+	get_tree().call_group('game', '_build', _block)

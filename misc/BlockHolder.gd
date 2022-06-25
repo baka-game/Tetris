@@ -19,6 +19,8 @@ func init(_is_idle: bool = true, _type: int = BlockType.normal):
 
 
 func set_block(_block):
+	if _block == null: is_idle = true
+	else: is_idle = false
 	block = _block
 	
 	

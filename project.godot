@@ -17,17 +17,41 @@ _global_script_classes=[ {
 "base": "Tetris",
 "class": "Itetris",
 "language": "GDScript",
+"path": "res://tetris/Ltetris.gd"
+}, {
+"base": "Tetris",
+"class": "Ltetris",
+"language": "GDScript",
 "path": "res://tetris/Itetris.gd"
 }, {
 "base": "Node2D",
 "class": "Tetris",
 "language": "GDScript",
 "path": "res://tetris/Tetris.gd"
+}, {
+"base": "Node",
+"class": "TetrisMoving",
+"language": "GDScript",
+"path": "res://misc/TetrisState/TetrisMoving.gd"
+}, {
+"base": "Node",
+"class": "TetrisStatic",
+"language": "GDScript",
+"path": "res://misc/TetrisState/TetrisStatic.gd"
+}, {
+"base": "Node",
+"class": "TetrisStuck",
+"language": "GDScript",
+"path": "res://misc/TetrisState/TetrisStuck.gd"
 } ]
 _global_script_class_icons={
 "BlockHolder": "",
 "Itetris": "",
-"Tetris": ""
+"Ltetris": "",
+"Tetris": "",
+"TetrisMoving": "",
+"TetrisStatic": "",
+"TetrisStuck": ""
 }
 
 [application]
@@ -39,12 +63,26 @@ config/icon="res://icon.png"
 
 BlockMap="*res://misc/BlockMap.gd"
 BlockType="*res://misc/BlockType.gd"
+TetrisStatus="*res://misc/TetrisStatus.gd"
 
 [display]
 
 window/size/width=350
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[input]
+
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 
